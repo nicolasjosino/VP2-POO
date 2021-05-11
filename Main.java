@@ -7,6 +7,7 @@ public class Main {
     int opcao = 0;
 
     do {
+      System.out.print("\n");
       System.out.println("Digite a opção desejada:");
       System.out.println("1 - Criar conta");
       System.out.println("2 - Acessar conta");
@@ -17,27 +18,34 @@ public class Main {
       try {
         if (opcao == 1) {
           int tipoConta = 0;
+          do {
+            System.out.print("\n");
+            System.out.println("Informe o tipo de conta:");
+            System.out.println("1 - Conta Corrente");
+            System.out.println("2 - Conta Poupança");
+            System.out.println("0 - Voltar");
+            System.out.print("Sua opção: ");
+            tipoConta = scanner.nextInt();
 
-          System.out.println("Informe o tipo de conta:");
-          System.out.println("1 - Conta Corrente");
-          System.out.println("2 - Conta Poupança");
-          System.out.print("Sua opção: ");
-
-          tipoConta = scanner.nextInt();
-          System.out.print("Digite o CPF: ");
-          String cadastroCPF = scanner.next();
-          System.out.print("Digite o nome do titular da conta: ");
-          String cadastroTitular = scanner.next();
-
-          if (tipoConta == 1) {
-            ContaCorrente cc = new ContaCorrente(cadastroCPF, cadastroTitular);
-            contas.put(cadastroCPF, cc);
-            System.out.println("Conta corrente cadastrada com sucesso!");
-          } else if (tipoConta == 2) {
-            ContaPoupanca cp = new ContaPoupanca(cadastroCPF, cadastroTitular);
-            contas.put(cadastroCPF, cp);
-            System.out.println("Conta poupança cadastrada com sucesso!");
-          }
+            if (tipoConta != 0) {
+              System.out.print("Digite o CPF: ");
+              String cadastroCPF = scanner.next();
+              System.out.print("Digite o nome do titular da conta: ");
+              String cadastroTitular = scanner.next();
+              if (tipoConta == 1) {
+                ContaCorrente cc = new ContaCorrente(cadastroCPF, cadastroTitular);
+                contas.put(cadastroCPF, cc);
+                System.out.println("Conta corrente cadastrada com sucesso!");
+                break;
+              }
+              if (tipoConta == 2) {
+                ContaPoupanca cp = new ContaPoupanca(cadastroCPF, cadastroTitular);
+                contas.put(cadastroCPF, cp);
+                System.out.println("Conta poupança cadastrada com sucesso!");
+                break;
+              }
+            }
+          } while (tipoConta != 0);
         }
         if (opcao == 2) {
           int opcaoAcesso = 0;
@@ -45,6 +53,7 @@ public class Main {
           String buscaCPF = scanner.next();
           ContaBancaria conta = contas.get(buscaCPF);
           if (conta != null) {
+            System.out.print("\n");
             System.out.println("Bem vindo(a), " + conta.getTitular() + "!");
             do {
               System.out.println("Escolha uma opção:");
@@ -53,7 +62,7 @@ public class Main {
               System.out.println("3 - Transferência");
               System.out.println("4 - Checar Saldo");
               System.out.println("5 - Encerrar conta");
-              System.out.println("0 - Voltar ao menu principal");
+              System.out.println("0 - Voltar");
               System.out.print("Sua opção: ");
               opcaoAcesso = scanner.nextInt();
 
