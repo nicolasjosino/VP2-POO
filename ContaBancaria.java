@@ -1,17 +1,17 @@
 public class ContaBancaria {
   
-  private String CPF;
+  private String ID;
   private String titular;
   protected double saldo;
 
-  public ContaBancaria(String CPF, String titular) {
-    this.CPF = CPF;
+  public ContaBancaria(String ID, String titular) {
+    this.ID = ID;
     this.titular = titular;
     this.saldo = 0;
   }
 
-  public String getCPF() {
-    return CPF;
+  public String getID() {
+    return ID;
   }
 
   public String getTitular() {
@@ -22,8 +22,8 @@ public class ContaBancaria {
     return saldo;
   }
 
-  public void setCPF(String CPF) {
-    this.CPF = CPF;
+  public void setID(String ID) {
+    this.ID = ID;
   }
 
   public void setTitular(String titular) {

@@ -28,19 +28,19 @@ public class Main {
             tipoConta = scanner.nextInt();
 
             if (tipoConta != 0) {
-              System.out.print("Digite o CPF: ");
-              String cadastroCPF = scanner.next();
+              System.out.print("Digite o ID: ");
+              String cadastroID = scanner.next();
               System.out.print("Digite o nome do titular da conta: ");
               String cadastroTitular = scanner.next();
               if (tipoConta == 1) {
-                ContaCorrente cc = new ContaCorrente(cadastroCPF, cadastroTitular);
-                contas.put(cadastroCPF, cc);
+                ContaCorrente cc = new ContaCorrente(cadastroID, cadastroTitular);
+                contas.put(cadastroID, cc);
                 System.out.println("Conta corrente cadastrada com sucesso!");
                 break;
               }
               if (tipoConta == 2) {
-                ContaPoupanca cp = new ContaPoupanca(cadastroCPF, cadastroTitular);
-                contas.put(cadastroCPF, cp);
+                ContaPoupanca cp = new ContaPoupanca(cadastroID, cadastroTitular);
+                contas.put(cadastroID, cp);
                 System.out.println("Conta poupança cadastrada com sucesso!");
                 break;
               }
@@ -49,9 +49,9 @@ public class Main {
         }
         if (opcao == 2) {
           int opcaoAcesso = 0;
-          System.out.println("Digite o CPF do titular da conta: ");
-          String buscaCPF = scanner.next();
-          ContaBancaria conta = contas.get(buscaCPF);
+          System.out.println("Digite o ID do titular da conta: ");
+          String buscaID = scanner.next();
+          ContaBancaria conta = contas.get(buscaID);
           if (conta != null) {
             System.out.print("\n");
             System.out.println("Bem vindo(a), " + conta.getTitular() + "!");
@@ -80,9 +80,9 @@ public class Main {
                   System.out.println("Depósito concluído!");
                 }
                 if (opcaoAcesso == 3) {
-                  System.out.print("Digite o CPF da conta beneficiária: ");
-                  String transferenciaCPF = scanner.next();
-                  ContaBancaria beneficiario = contas.get(transferenciaCPF);
+                  System.out.print("Digite o ID da conta beneficiária: ");
+                  String transferenciaID = scanner.next();
+                  ContaBancaria beneficiario = contas.get(transferenciaID);
                   if (beneficiario != null) {
                     System.out.print("Digite o valor a ser transferido: ");
                     Double valorTransferencia = scanner.nextDouble();
@@ -101,7 +101,7 @@ public class Main {
                   confirma = scanner.next();
 
                   if (confirma.equals("S")) {
-                    contas.remove(conta.getCPF());
+                    contas.remove(conta.getID());
                     System.out.println("Conta encerrada com sucesso!");
                     opcaoAcesso = 0;
                   } else {
@@ -119,7 +119,7 @@ public class Main {
               }
             } while (opcaoAcesso != 0);
           } else {
-            System.out.println("Conta não cadastrada com esse CPF.");
+            System.out.println("Conta não cadastrada com esse ID.");
           }
         }
       } catch (Exception e) {

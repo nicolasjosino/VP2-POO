@@ -1,7 +1,7 @@
 public class ContaPoupanca extends ContaBancaria {
 
-  public ContaPoupanca(String CPF, String titular) {
-    super(CPF, titular);
+  public ContaPoupanca(String ID, String titular) {
+    super(ID, titular);
   }
 
   public void sacar(double valor) throws SaqueNegativoException, SaldoNegativoException {
